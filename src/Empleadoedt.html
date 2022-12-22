@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Editar</title>
+</head>
+
+<body>
+    <div class="v43_46">
+        <div class="v43_47"></div><span class="v43_48">Gerente</span>
+        <div class="v43_49"></div>
+        <div class="v43_50"></div>
+        <div class="name"></div><span class="v43_53">Empleados</span>
+        <div class="v38_11">
+            <form method="POST" action="/empIDedt">
+                <input type="text" class="vInse" name="NAME" id="emp" placeholder="Cedula" readonly></input>
+                <input type="text" class="vInse" name="hor" id="hor" placeholder="Horario" required></input>
+                <input type="text" class="vInse" name="sal" id="sal" placeholder="Salario" required></input>
+                <input type="text" class="vInse" name="pos" id="pos" placeholder="Posicion" required></input>
+                <input type="text" class="vInse" name="nom" id="nom" placeholder="Nombre" required></input>
+                <input type="text" class="vInse" name="tel" id="tel" placeholder="Telefono" required></input>
+                <input type="text" class="vInse" name="ema" id="ema" placeholder="Email" required></input>
+                <button type="submit" class="vInse" >Ingresar</button>
+                <a href="/Empleado.html" class="vInse">Volver</a>
+            </form>
+        </div>
+    </div>
+
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var url = 'http://localhost:4000/EEmpleado'
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function (res){
+                    $('#emp').val(res[0].empID);
+                    $('#hor').val(res[0].empHorario);
+                    $('#sal').val(res[0].empSalario);
+                    $('#pos').val(res[0].empPosicion);
+                    $('#nom').val(res[0].empNombre);
+                    $('#ema').val(res[0].empEmail);
+                    $('#tel').val(res[0].empTelefono);
+                }
+            })
+       });
+    </script>
+</body>
+
+</html>

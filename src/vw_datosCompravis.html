@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Factura de compra</title>
+</head>
+
+<body>
+    <div class="v43_46">
+        <div class="v43_47"></div><span class="v43_48">Gerente</span>
+        <div class="v43_49"></div>
+        <div class="v43_50"></div>
+        <div class="name"></div><span class="v43_53">F. compra</span>
+        <div class="v43_79"></div><span class="v43_80">Proveedor</span>
+        <span class="v43_82">Fecha</span>
+            <span class="v43_84" id="prv"></span>
+            <span class="v43_86" id="fcf"></span>
+            <button class="v46_144" onclick="location.href='/vw_datosCompraEdt.html'"></button>
+        <form action='/vw_datosCompraEdtdel' method="POST">
+            <button class="v46_145" type="submit"></button>
+        </form>
+    </div>
+    <table class="table table-bordered" id="vw_datosCompraVis">
+        <thead>
+            <tr>
+                <th class="v6text">ID</th>
+                <th class="v6text">Producto</th>
+                <th class="v6text">Precio</th>
+                <th class="v6text">Cantidad</th>
+            </tr>
+        </thead>
+        <tbody id="tablebody">
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var url = 'http://localhost:4000/vw_compraDatos'
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            success: function (res){
+                $('#prv').html(res[0].provNombre);
+                $('#fcf').html(res[0].fcFecha);
+            }
+        });
+        $('#vw_datosCompraVis').DataTable({
+                "ajax":{
+                    "url": url,
+                    "dataSrc":""
+                },
+                "columns":[
+                    {"data":"idFactura"},
+                    {"data":"prodNombre"},
+                    {"data":"prodPrecioCompra"},
+                    {"data":"ccpCantidad"},
+                ],
+                "columnDefs":[{
+                    "targets":[2],
+                    render(v){
+                        return Number(v).toFixed(0)
+                    }
+                }]
+            });
+});
+</script>
+</html>

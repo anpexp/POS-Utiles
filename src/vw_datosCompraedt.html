@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Datos de compra</title>
+</head>
+
+<body>
+    <div class="v43_46">
+        <div class="v43_47"></div><span class="v43_48">Gerente</span>
+        <div class="v43_49"></div>
+        <div class="v43_50"></div>
+        <div class="name"></div><span class="v43_53">Datos de compra</span>
+        <div class="v38_11">
+            <form method="POST" action="/vwdatoscompraedt">
+                <input type="text" class="vInse" name="fec" id="fec" placeholder="Fecha" readonly></input>
+                <input type="text" class="vInse" name="ndf" id="ndf" placeholder="No. de factura" readonly></input>
+                <input type="text" class="vInse" name="prd" id="prd" placeholder="Producto" required></input>
+                <input type="text" class="vInse" name="prc" id="prc" placeholder="Precio" required></input>
+                <input type="text" class="vInse" name="prv" id="prv" placeholder="Proveedor" required></input>
+                <input type="text" class="vInse" name="can" id="can" placeholder="Cantidad" required></input>
+                <button type="submit" class="vInse" >Ingresar</button>
+                <a href="/vw_datosCompra.html" class="vInse">Volver</a>
+            </form>
+        </div>
+    </div>
+
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var url = 'http://localhost:4000/vw_compraDatos'
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function (res){
+                    $('#fec').val(res[0].fcFecha);
+                    $('#ndf').val(res[0].idFactura);
+                    $('#prd').val(res[0].prodNombre);
+                    $('#prc').val(res[0].prodPrecioCompra);
+                    $('#prv').val(res[0].provNombre);
+                    $('#can').val(res[0].ccpCantidad);
+                }
+            })
+       });
+    </script>
+</body>
+
+</html>

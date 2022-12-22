@@ -1,0 +1,56 @@
+<!DOCTYPE html><html>
+    <head><link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" /><link href="./css/main.css" rel="stylesheet" />
+        <title>Document</title>
+    </head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
+    <body>
+        <div class="v38_6"><div class="v38_7"></div>
+        <span class="v38_8">Gerente</span>
+        <div class="v38_9"></div>
+        <div class="v38_10"></div>
+        <div class="v38_11">
+        <table class="table table-bordered" id="vw_datosFactura">
+            <thead>
+                <tr>
+                    <th class="v6text">Cliente</th>
+                    <th class="v6text">Empleado</th>
+                    <th class="v6text">ID de Factura</th>
+                    <th class="v6text">Total</th>
+                    <th class="v6text">Fecha</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+            </tbody>
+        </table>
+    </div>
+        <div class="v43_97"></div><div class="v46_98"></div><div class="v46_99"></div><div class="v46_100"></div></div><div class="v46_148"><span class="v46_152">Búsqueda</span></div></div>
+        
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            $(document).ready(function() {   
+                var url = 'http://localhost:4000/vw_datosFactura';
+                 $('#vw_datosFactura').DataTable({
+                     "ajax":{
+                         "url": url,
+                         "dataSrc":""
+                     },
+                     "columns":[
+                         {"data":"cliNombre"},
+                         {"data":"empNombre"},
+                         {"data":"fvID"},
+                         {"data":"fvTotal"},
+                         {"data":"fvFecha"},
+                     ],
+                     "columnDefs":[{
+                         "targets":[2],
+                         render(v){
+                             return Number(v).toFixed(2)
+                         }
+                     }]
+                 });
+           });
+       </script>
+    </body></html>

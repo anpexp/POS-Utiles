@@ -1,0 +1,63 @@
+<!DOCTYPE html><html>
+    <head><link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" /><link href="./css/main.css" rel="stylesheet" />
+        <title>Factura de compra</title>
+    </head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
+    <body>
+        <div class="v38_6"><div class="v38_7"></div>
+        <span class="v38_8">Gerente</span>
+        <div class="v38_9"></div>
+        <div class="v38_10"></div>
+        <div><span class="v43_53">Factura de compra</span></div>
+        <div class="v38_11">
+        <table class="table table-bordered" id="vw_datosCompra">
+            <thead>
+                <tr>
+                    <th class="v6text">Fecha</th>
+                    <th class="v6text">ID</th>
+                    <th class="v6text">Producto</th>
+                    <th class="v6text">Precio</th>
+                    <th class="v6text">Proveedor</th>
+                    <th class="v6text">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+            </tbody>
+        </table>
+    </div>
+    <div class="v46_148">
+        <form action='/vw_dConsulta' method="POST">
+            <input type="text" class="vespa" name="NAME" placeholder="Búsqueda" required></input>
+            <button type="submit" class="vbusq">Ingresar</button>
+        </form>
+    </div>
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var url = 'http://localhost:4000/vw_datosCompra';
+                 $('#vw_datosCompra').DataTable({
+                     "ajax":{
+                         "url": url,
+                         "dataSrc":""
+                     },
+                     "columns":[
+                         {"data":"fcFecha"},
+                         {"data":"idFactura"},
+                         {"data":"prodNombre"},
+                         {"data":"prodPrecioCompra"},
+                         {"data":"provNombre"},
+                         {"data":"ccpCantidad"},
+                     ],
+                     "columnDefs":[{
+                         "targets":[3],
+                         render(v){
+                             return Number(v).toFixed(0)
+                         }
+                     }]
+                 });
+           });
+       </script>
+    </body></html>

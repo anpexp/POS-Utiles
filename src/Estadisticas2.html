@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
+    <title>Estadisticas</title>
+</head>
+<div>
+    <div class="v6_5">
+        <div class="v6_6"></div><span class="v6_8">Gerente</span>
+        <div class="v6_9"></div>
+        <div class="v6_11"></div>
+        <div class="v6_19"></div><span class="v6_18">Elija una opción</span>
+        <div class="v6_15" id="padre">
+            <div class="v6_31">
+                <span class="v6text">Ventas por mes</span>
+                <form action="ingresoMes" method="post">
+                <select name="mes" id="opcion" class="opcion">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+                <button type="submit" class="vins">Ver</button>
+            </form>
+                <span class="v6text">N° de ventas:</span>
+                <span class="v6text" id="vdm"></span>
+                <span class="v6text">Promedio ticket:</span>
+                <span class="v6text" id="pdt"></span>
+                <span class="v6text">Total del mes:</span>
+                <span class="v6text" id="tdm"></span>
+            </div>
+        </div>
+        </body>
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var url = 'http://localhost:4000/ingresosMes';
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (res){
+                        $('#vdm').html(res[0][0].ventasDelMes);
+                        $('#pdt').html(res[0][0].promedioDeVenta);
+                        $('#tdm').html(res[0][0].TotalDelMes);
+                    }
+                })
+           });
+        </script>
+</html>

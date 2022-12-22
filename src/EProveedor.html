@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Edicion Proveedor</title>
+</head>
+
+<body>
+    <div class="v43_46">
+        <div class="v43_47"></div><span class="v43_48">Gerente</span>
+        <div class="v43_49"></div>
+        <div class="v43_50"></div>
+        <div class="name"></div><span class="v43_53">Editar proveedor</span>
+        <div class="v38_11">
+            <form method="POST" action="/Proveedoredt">
+                <input type="text" class="vInse" name="prv" id="prv" placeholder="ID Proveedor" readonly></input>
+                <input type="text" class="vInse" name="nom" id="nom" placeholder="Nombre" required></input>
+                <input type="text" class="vInse" name="dir" id="dir" placeholder="Dirección" required></input>
+                <input type="text" class="vInse" name="con" id="con" placeholder="Contacto" required></input>
+                <input type="text" class="vInse" name="eml" id="eml" placeholder="Email" required></input>
+                <button type="submit" class="vInse" >Ingresar</button>
+                <a href="/Proveedor.html" class="vInse">Volver</a>
+            </form>
+        </div>
+    </div>
+
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var url = 'http://localhost:4000/EProveedor'
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function (res){
+                    $('#prv').val(res[0].provID);
+                    $('#nom').val(res[0].provNombre);
+                    $('#dir').val(res[0].provDireccion);
+                    $('#con').val(res[0].provContacto);
+                    $('#eml').val(res[0].provEmail);
+                }
+            })
+       });
+    </script>
+</body>
+
+</html>

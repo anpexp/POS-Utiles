@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="v43_46">
+        <div class="v43_47"></div><span class="v43_48">Gerente</span>
+        <div class="v43_49"></div>
+        <div class="v43_50"></div>
+        <div class="name"></div><span class="v43_53">Empleados</span>
+        <div class="v38_11">
+            <form method="POST" action="/empIDins">
+                <input type="text" class="vInse" name="NAME" placeholder="Cedula" required></input>
+                <input type="text" class="vInse" name="hor" placeholder="Horario" required></input>
+                <input type="text" class="vInse" name="sal" placeholder="Salario" required></input>
+                <select class="vSel" name="pos" required>
+                    <option value="" disabled hidden selected>Posición</option>
+                    <option value="vendedor">Vendedor</option>
+                    <option value="logistica">Logistica</option>
+                    <option value="gerente">Gerente</option>
+                    <option value="dueño">Dueño</option>
+                </select>
+                <input type="text" class="vInse" name="nom" placeholder="Nombre" required></input>
+                <input type="text" class="vInse" name="tel" placeholder="Telefono" required></input>
+                <input type="text" class="vInse" name="ema" placeholder="Email" required></input>
+                <button type="submit" class="vInse" >Ingresar</button>
+                <a href="/Empleado.html" class="vInse">Volver</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
